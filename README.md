@@ -51,7 +51,7 @@ Configuration
 Running:
 For Velodyne M1600:
 
-    Download Velodyne M1600 dataset [https://zenodo.org/records/7913307] 2_human_walking_illuminated_2023-01-23-001.zip
+     Download Velodyne M1600 dataset [https://zenodo.org/records/7913307] 2_human_walking_illuminated_2023-01-23-001.zip
     
     -Run the converter
     
@@ -64,7 +64,7 @@ For Velodyne M1600:
     -rosbag play bagfile
 
 For Bpearl:
-    Download Bpearl dataset [https://hilti-challenge.com/dataset-2023.html] Site 2 	Robot 	Floor 1 Large room
+     Download Bpearl dataset [https://hilti-challenge.com/dataset-2023.html] Site 2 	Robot 	Floor 1 Large room
     
     -Run the converter
 
@@ -78,7 +78,7 @@ For Bpearl:
     
 For Livox MID70:
 
-    Download Livox MID70 dataset [https://hilti-challenge.com/dataset-2021.html] Construction Site Outdoor 1
+     Download Livox MID70 dataset [https://hilti-challenge.com/dataset-2021.html] Construction Site Outdoor 1
     
     -Run the launch file:
     
