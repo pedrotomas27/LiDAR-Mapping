@@ -21,7 +21,6 @@ make -j
 sudo make install
 
 2 -> Install glog:
-
 sudo apt-get install -y libgoogle-glog-dev
 
 3 -> Clone the IG Lio Workspace repository and download necessary scripts:
