@@ -21,17 +21,24 @@ make -j
 sudo make install
 
 2 -> Install glog:
+
 sudo apt-get install -y libgoogle-glog-dev
 
 3 -> Clone the IG Lio Workspace repository and download necessary scripts:
 cd <your_workspace>
+
 mkdir src
+
 cd src
+
 git clone https://github.com/zijiechenrobotics/ig_lio_workspace.git
+
 git clone https://github.com/Livox-SDK/livox_ros_driver
 
 4 -> Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
+
 chmod +x convBP_VLP.py
+
 chmod +x convM1600_VLP.py
 
 5 -> Build the workspace:
