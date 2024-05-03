@@ -12,13 +12,13 @@ Prerequisites
 Installation Steps
 
 1 -> Clone the Livox ROS Driver repository:
-git clone https://github.com/Livox-SDK/Livox-SDK
-cd Livox-SDK
-mkdir build
-cd build
-cmake ..
-make -j
-sudo make install
+    git clone https://github.com/Livox-SDK/Livox-SDK
+    cd Livox-SDK
+    mkdir build
+    cd build
+    cmake ..
+    make -j
+    sudo make install
 
 2 -> Install glog:
 
