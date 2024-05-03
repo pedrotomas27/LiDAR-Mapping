@@ -12,6 +12,7 @@ Prerequisites
 Installation Steps
 
 1 -> Clone the Livox ROS Driver repository:
+
     git clone https://github.com/Livox-SDK/Livox-SDK
     cd Livox-SDK
     mkdir build
