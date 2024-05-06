@@ -30,7 +30,7 @@ Clone the repository and catkin_make:
 ## 3.Configuration
 
     
-    Add the following launch files to the launch directory: lio_MID70.launch, lio_bg_velodyneM1600C.launch, lio_bg_velodyneBPearlC.launch
+    Add the following launch files to the launch directory: aloam_velodyne_VLP_16M1600C.launch
     
 Running:
 For Velodyne M1600:
