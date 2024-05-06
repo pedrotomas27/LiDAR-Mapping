@@ -28,14 +28,18 @@ Clone the repository and catkin_make:
     git clone https://github.com/hku-mars/FAST_LIO.git
     cd FAST_LIO
     git submodule update --init
-    cd ../..
+    cd ..
+    Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
+    chmod +x convBP_VLP.py
+    chmod +x convM1600_VLP.py
+    cd ..
     catkin_make
     source devel/setup.bash
 ```
 - Remember to source the livox_ros_driver before build (follow 1.3 **livox_ros_driver**)
 - If you want to use a custom build of PCL, add the following line to ~/.bashrc
 ```export PCL_ROOT={CUSTOM_PCL_PATH}```
-## 3. Directly run
+## 2. Directly run
 Noted:
 
 A. Please make sure the IMU and LiDAR are **Synchronized**, that's important.
@@ -44,15 +48,6 @@ B. The warning message "Failed to find match for field 'time'." means the timest
 
 C. We recommend to set the **extrinsic_est_en** to false if the extrinsic is give. As for the extrinsic initiallization, please refer to our recent work: [**Robust Real-time LiDAR-inertial Initialization**](https://github.com/hku-mars/LiDAR_IMU_Init).
 
-4 -> Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
-
-    chmod +x convBP_VLP.py
-    chmod +x convM1600_VLP.py
-
-5 -> Build the workspace:
-
-    cd ..
-    catkin_make
 
 Configuration
 
