@@ -12,10 +12,10 @@ FasterLIO can be compiled by plain cmake or catkin_make. In Ubuntu 20.04, the co
 
 1 Use the following commands to build FasterLIO:
 
-mkdir build
-cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j4
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make -j4
 
 Note: iVox type should be specified by cmake at compile time. By default we will use linear iVox. Use cmake .. -DWITH_IVOX_NODE_TYPE_PHC=ON to build the FasterLIO with PHC iVox.
 
