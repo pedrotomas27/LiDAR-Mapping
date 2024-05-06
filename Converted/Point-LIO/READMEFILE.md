@@ -1,52 +1,50 @@
-IG Lio Workspace Setup Guide
+# **1. Prerequisites**
 
-This guide will help you set up the IG Lio Workspace on Ubuntu 18.04 or Ubuntu 20.04. Please make sure you have the necessary dependencies installed before proceeding.
-Prerequisites
+## **1.1 Ubuntu and [ROS](https://www.ros.org/)**
+We tested our code on Ubuntu18.04 with ros melodic and Ubuntu20.04 with noetic. Additional ROS package is required:
+```
+sudo apt-get install ros-xxx-pcl-conversions
+```
 
-    Ubuntu version >= 18.04 (Ubuntu 20.04 is recommended)
-    GCC & G++ version >= 9
-    TBB version >= 2020 (Installation Guide)
-    Livox ROS Driver (GitHub Repo)
-    glog (libgoogle-glog-dev)
+## **1.2 Eigen**
+Following the official [Eigen installation](eigen.tuxfamily.org/index.php?title=Main_Page), or directly install Eigen by:
+```
+sudo apt-get install libeigen3-dev
+```
 
-Installation Steps
+## **1.3 livox_ros_driver**
+Follow [livox_ros_driver Installation](https://github.com/Livox-SDK/livox_ros_driver).
 
-1 -> Clone the Livox ROS Driver repository:
+*Remarks:*
+- Since the Point-LIO supports Livox serials LiDAR, so the **livox_ros_driver** must be installed and **sourced** before run any Point-LIO luanch file.
+- How to source? The easiest way is add the line ``` source $Licox_ros_driver_dir$/devel/setup.bash ``` to the end of file ``` ~/.bashrc ```, where ``` $Licox_ros_driver_dir$ ``` is the directory of the livox ros driver workspace (should be the ``` ws_livox ``` directory if you completely followed the livox official document).
 
-    git clone https://github.com/Livox-SDK/Livox-SDK
-    cd Livox-SDK
-    mkdir build
-    cd build
-    cmake ..
-    make -j
-    sudo make install
+## 2. Build
+Clone the repository and catkin_make:
 
-2 -> Install glog:
-
-    sudo apt-get install -y libgoogle-glog-dev
-
-3 -> Clone the IG Lio Workspace repository and download necessary scripts:
-
-    cd <your_workspace>
-    mkdir src
-    cd src
-    git clone https://github.com/zijiechenrobotics/ig_lio_workspace.git
-    git clone https://github.com/Livox-SDK/livox_ros_driver
-
-4 -> Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
+```
+    cd ~/$A_ROS_DIR$/src
+    git clone https://github.com/hku-mars/Point-LIO.git
+    cd Point-LIO
+    git submodule update --init
+    cd ..
+    Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
 
     chmod +x convBP_VLP.py
     chmod +x convM1600_VLP.py
-
-5 -> Build the workspace:
-
     cd ..
     catkin_make
+    source devel/setup.bash
+```
+- Remember to source the livox_ros_driver before build (follow 1.3 **livox_ros_driver**)
+- If you want to use a custom build of PCL, add the following line to ~/.bashrc
+```export PCL_ROOT={CUSTOM_PCL_PATH}```
+
 
 Configuration
 
-    Add the following files to the config directory: bg_velodyneBpearlC.yaml, bg_velodyneM1600C.yaml, MID70.yaml
-    Add the following launch files to the launch directory: lio_MID70.launch, lio_bg_velodyneM1600C.launch, lio_bg_velodyneBPearlC.launch
+    Add the following files to the config directory: MID70.yaml, velody16BPC.yaml, velody16M1600C.yaml
+    Add the following launch files to the launch directory: mapping_MID70.launch, mapping_velody16BPC.launch, mapping_velody16M1600C.launch
     
 Running:
 For Velodyne M1600:
@@ -57,7 +55,7 @@ For Velodyne M1600:
     
     -Run the launch file:
     
-    -roslaunch ig_lio lio_bg_velodyneM1600C.launch
+    -roslaunch point_lio mapping_velody16M1600C.launch
     
     -Play the bag file:
     
@@ -71,7 +69,7 @@ For Bpearl:
 
     -Run the launch file:
     
-    -roslaunch ig_lio lio_bg_velodyneBPearlC.launch
+    -roslaunch point_lio mapping_velody16BPC.launch
     
     -Play the bag file:
     
@@ -83,7 +81,7 @@ For Livox MID70:
     
     -Run the launch file:
     
-    -roslaunch ig_lio lio_MID70.launch
+    -roslaunch point_lio mapping_MID70.launch
     
     -Play the bag file:
     
