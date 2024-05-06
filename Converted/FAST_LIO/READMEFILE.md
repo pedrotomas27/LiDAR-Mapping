@@ -51,8 +51,8 @@ C. We recommend to set the **extrinsic_est_en** to false if the extrinsic is giv
 
 Configuration
 
-    Add the following files to the config directory: bg_velodyneBpearlC.yaml, bg_velodyneM1600C.yaml, MID70.yaml
-    Add the following launch files to the launch directory: lio_MID70.launch, lio_bg_velodyneM1600C.launch, lio_bg_velodyneBPearlC.launch
+    Add the following files to the config directory: velodyneBPC.yaml, velodyneM1600C.yaml
+    Add the following launch files to the launch directory: mapping_velodyneBPC.launch, mapping_velodyneM1600C.launch
     
 Running:
 For Velodyne M1600:
@@ -63,7 +63,7 @@ For Velodyne M1600:
     
     -Run the launch file:
     
-    -roslaunch ig_lio lio_bg_velodyneM1600C.launch
+    -roslaunch fast_lio mapping_velodyneM1600C.launch
     
     -Play the bag file:
     
@@ -77,21 +77,9 @@ For Bpearl:
 
     -Run the launch file:
     
-    -roslaunch ig_lio lio_bg_velodyneBPearlC.launch
+    -roslaunch fast_lio mapping_velodyneBPC.launch
     
     -Play the bag file:
     
     -rosbag play bagfile
     
-For Livox MID70:
-
-     Download Livox MID70 dataset [https://hilti-challenge.com/dataset-2021.html] Construction Site Outdoor 1
-    
-    -Run the launch file:
-    
-    -roslaunch ig_lio lio_MID70.launch
-    
-    -Play the bag file:
-    
-    -rosbag play bagfile
-
