@@ -49,7 +49,7 @@ For Velodyne M1600:
     
     -Run the launch file:
     
-    -roslaunch ig_lio lio_bg_velodyneM1600C.launch
+    -roslaunch faster_lio mapping_velodyneM1600C.launch
     
     -Play the bag file:
     
@@ -63,21 +63,10 @@ For Bpearl:
 
     -Run the launch file:
     
-    -roslaunch ig_lio lio_bg_velodyneBPearlC.launch
+    -roslaunch faster_lio mapping_velodyneBPC.launch
     
     -Play the bag file:
     
     -rosbag play bagfile
     
-For Livox MID70:
-
-     Download Livox MID70 dataset [https://hilti-challenge.com/dataset-2021.html] Construction Site Outdoor 1
-    
-    -Run the launch file:
-    
-    -roslaunch ig_lio lio_MID70.launch
-    
-    -Play the bag file:
-    
-    -rosbag play bagfile
 
