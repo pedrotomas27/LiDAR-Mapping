@@ -1,52 +1,44 @@
-IG Lio Workspace Setup Guide
+FasterLIO is tested in Ubuntu 18.04 and Ubuntu 20.04. Please install the following libraries before compilation.
 
-This guide will help you set up the IG Lio Workspace on Ubuntu 18.04 or Ubuntu 20.04. Please make sure you have the necessary dependencies installed before proceeding.
-Prerequisites
+    ROS (melodic or noetic)
+    glog: sudo apt-get install libgoogle-glog-dev
+    eigen: sudo apt-get install libeigen3-dev
+    pcl: sudo apt-get install libpcl-dev
+    yaml-cpp: sudo apt-get install libyaml-cpp-dev
 
-    Ubuntu version >= 18.04 (Ubuntu 20.04 is recommended)
-    GCC & G++ version >= 9
-    TBB version >= 2020 (Installation Guide)
-    Livox ROS Driver (GitHub Repo)
-    glog (libgoogle-glog-dev)
+FasterLIO can be compiled by plain cmake or catkin_make. In Ubuntu 20.04, the compile step is relatively simple.
 
-Installation Steps
+    Plain cmake
 
-1 -> Clone the Livox ROS Driver repository:
+1 Use the following commands to build FasterLIO:
 
-    git clone https://github.com/Livox-SDK/Livox-SDK
-    cd Livox-SDK
-    mkdir build
-    cd build
-    cmake ..
-    make -j
-    sudo make install
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j4
 
-2 -> Install glog:
+Note: iVox type should be specified by cmake at compile time. By default we will use linear iVox. Use cmake .. -DWITH_IVOX_NODE_TYPE_PHC=ON to build the FasterLIO with PHC iVox.
 
-    sudo apt-get install -y libgoogle-glog-dev
+    catkin_make
 
-3 -> Clone the IG Lio Workspace repository and download necessary scripts:
+2 Clone this repository to your catkin workspace, e.g., ~/catkin_ws/src, then use catkin_make instead of the above cmake commands. You can also specify the iVox type in catkin_make parameters.
 
-    cd <your_workspace>
-    mkdir src
-    cd src
-    git clone https://github.com/zijiechenrobotics/ig_lio_workspace.git
-    git clone https://github.com/Livox-SDK/livox_ros_driver
+After the compilation, you will get the a libfaster_lio.so and two executable files. If you choose plain cmake build, they will be located in ./build/devel/lib/faster_lio. If you use catkin_make, you could run them with rosrun and roslaunch.
 
-4 -> Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
+3 -> Download convBP_VLP.py and convM1600_VLP.py scripts. Make them executable:
 
     chmod +x convBP_VLP.py
     chmod +x convM1600_VLP.py
 
-5 -> Build the workspace:
+4 -> Build the workspace:
 
     cd ..
     catkin_make
 
 Configuration
 
-    Add the following files to the config directory: bg_velodyneBpearlC.yaml, bg_velodyneM1600C.yaml, MID70.yaml
-    Add the following launch files to the launch directory: lio_MID70.launch, lio_bg_velodyneM1600C.launch, lio_bg_velodyneBPearlC.launch
+    Add the following files to the config directory: velodyne_BPC.yaml, velodyne_M1600C.yaml
+    Add the following launch files to the launch directory: mapping_velodyneBPC.launch, mapping_velodyneM1600C.launch
     
 Running:
 For Velodyne M1600:
