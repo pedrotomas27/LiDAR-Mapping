@@ -25,3 +25,16 @@ git clone https://github.com/JokerJohn/LIO_SAM_6AXIS.git
 cd LIO_SAM_6AXIS
 catkin build
 ```
+
+3. Running:
+For Velodyne M1600:
+
+     Download Velodyne M1600 dataset [https://zenodo.org/records/7913307] 2_human_walking_illuminated_2023-01-23-001.zip
+   
+    
+    -Run the launch file:
+    
+    roslaunch lio_sam_6axis test_m1600.launch
+
+
+    
