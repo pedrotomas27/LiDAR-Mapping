@@ -1,40 +1,79 @@
-## Getting Started
+# **1. Prerequisites**
 
-To get started with LIO_SAM_6AXIS, follow these steps:
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/JokerJohn/LIO_SAM_6AXIS.git
-
+## **1.1 Ubuntu and [ROS](https://www.ros.org/)**
+We tested our code on Ubuntu18.04 with ros melodic and Ubuntu20.04 with noetic. Additional ROS package is required:
+```
+sudo apt-get install ros-xxx-pcl-conversions
 ```
 
-2. Install the dependencies:
-
- [ROS](http://wiki.ros.org/ROS/Installation) (tested with Kinetic and Melodic. Refer to [#206](https://github.com/TixiaoShan/LIO-SAM/issues/206) for Noetic)
-  ```
-  sudo apt-get install -y ros-kinetic-navigation
-  sudo apt-get install -y ros-kinetic-robot-localization
-  sudo apt-get install -y ros-kinetic-robot-state-publisher
-  ```
-- [gtsam](https://gtsam.org/get_started/) (Georgia Tech Smoothing and Mapping library)
-  ```
-  sudo add-apt-repository ppa:borglab/gtsam-release-4.2
-  sudo apt install libgtsam-dev libgtsam-unstable-dev
-```bash
-cd LIO_SAM_6AXIS
-catkin build
+## **1.2 Eigen**
+Following the official [Eigen installation](eigen.tuxfamily.org/index.php?title=Main_Page), or directly install Eigen by:
+```
+sudo apt-get install libeigen3-dev
 ```
 
-3. Running:
+## **1.3 livox_ros_driver**
+Follow [livox_ros_driver Installation](https://github.com/Livox-SDK/livox_ros_driver).
+
+*Remarks:*
+- Since the Point-LIO supports Livox serials LiDAR, so the **livox_ros_driver** must be installed and **sourced** before run any Point-LIO luanch file.
+- How to source? The easiest way is add the line ``` source $Licox_ros_driver_dir$/devel/setup.bash ``` to the end of file ``` ~/.bashrc ```, where ``` $Licox_ros_driver_dir$ ``` is the directory of the livox ros driver workspace (should be the ``` ws_livox ``` directory if you completely followed the livox official document).
+
+## 2. Build
+Clone the repository and catkin_make:
+
+```
+    cd ~/$A_ROS_DIR$/src
+    git clone https://github.com/pedrotomas27/Point-LIO
+    cd Point-LIO
+    git submodule update --init
+    cd ../..
+    catkin_make
+    source devel/setup.bash
+```
+- Remember to source the livox_ros_driver before build (follow 3.3 **livox_ros_driver**)
+- If you want to use a custom build of PCL, add the following line to ~/.bashrc
+```export PCL_ROOT={CUSTOM_PCL_PATH}```
+
+## 3. Running:
 For Velodyne M1600:
 
      Download Velodyne M1600 dataset [https://zenodo.org/records/7913307] 2_human_walking_illuminated_2023-01-23-001.zip
-   
+ 
     
     -Run the launch file:
     
-    roslaunch lio_sam_6axis test_m1600.launch
+    -roslaunch point_lio mapping_velodyM1600.launch
+    
+    -Play the bag file:
+    
+    -rosbag play bagfile
+
+For Bpearl:(For this type of LiDAR in particular i cant seem to get the best results with my modification, for better results please see the convertion method)
+
+     Download Bpearl dataset [https://hilti-challenge.com/dataset-2023.html] Site 2 	Robot 	Floor 1 Large room
+    
+   
+    -Run the launch file:
+    
+    -roslaunch point_lio mapping_BPearl.launch
+    
+    -Play the bag file:
+    
+    -rosbag play bagfile
+    
+For Livox MID70:
+
+     Download Livox MID70 dataset [https://hilti-challenge.com/dataset-2021.html] Construction Site Outdoor 1
+    
+    -Run the launch file:
+    
+    -roslaunch point_lio mapping_MID70.launch
+    
+    -Play the bag file:
+    
+    -rosbag play bagfile
+
 
 
     
